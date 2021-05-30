@@ -4,3 +4,13 @@
 
 ##### Search for faker library
 https://github.com/fzaninotto/Faker
+
+##### php artisan tinker
+App\Model\Product::find(4)
+App\Model\Product::find(4)->reviews
+
+Making resources
+php artisan help make:resource
+
+php artisan make:resource Product/ProductCollection
+php artisan make:resource Product/ProductResource
