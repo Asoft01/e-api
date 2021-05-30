@@ -1,0 +1,3 @@
+# php artisan help make:model
+#php artisan make:model Model/Product -a 
+#php artisan make:model Model/Review -a 
