@@ -25,7 +25,7 @@ class ProductResource extends Resource
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'No rating yet',
             // 'rating' => round($this->reviews->sum('star') / $this->reviews->count(), 2),
             // 'rating' => $this->reviews->sum('star') / $this->reviews->count(),
-            // 'rating' => $this->reviews->sum('star'),
+            // 'rating_star' => $this->reviews->sum('star'),
             // 'rating' => $this->reviews,
             // 'count' => $this->reviews->count(),
             'href'=> [
