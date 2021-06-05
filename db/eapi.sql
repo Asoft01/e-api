@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 11:51 PM
+-- Generation Time: Jun 05, 2021 at 03:36 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -41,7 +41,147 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2014_10_12_000000_create_users_table', 1),
 (14, '2014_10_12_100000_create_password_resets_table', 1),
 (15, '2021_05_30_134239_create_products_table', 1),
-(16, '2021_05_30_140649_create_reviews_table', 1);
+(16, '2021_05_30_140649_create_reviews_table', 1),
+(17, '2016_06_01_000001_create_oauth_auth_codes_table', 2),
+(18, '2016_06_01_000002_create_oauth_access_tokens_table', 2),
+(19, '2016_06_01_000003_create_oauth_refresh_tokens_table', 2),
+(20, '2016_06_01_000004_create_oauth_clients_table', 2),
+(21, '2016_06_01_000005_create_oauth_personal_access_clients_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `client_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('118f6a506415e5d32fb6fd6990846abfdfbb9ce90aae38b09a262843a685aa9ef6857e574845c6e4', 1, 2, NULL, '[]', 0, '2021-06-05 12:23:26', '2021-06-05 12:23:26', '2022-06-05 13:23:26'),
+('147f7d417da33e3490c2d1aacc20cada13beddf17276c164481be35214cc8130e53bdbf45d34dfc9', 1, 2, NULL, '[]', 0, '2021-06-05 12:34:12', '2021-06-05 12:34:12', '2022-06-05 13:34:12'),
+('14817b9aef8ba61ad61af4f775be9197c30ddbc9f7d689539ce538446c0e69191ec753ce9451a15e', 1, 2, NULL, '[]', 0, '2021-06-05 12:20:02', '2021-06-05 12:20:02', '2022-06-05 13:20:02'),
+('2d4367da8911f66898d567d2ac1d6b9a420c2a714a4c4797722341cf7badf6cecfd8e06705a9d7c4', 1, 2, NULL, '[]', 0, '2021-06-05 10:20:17', '2021-06-05 10:20:17', '2022-06-05 11:20:17'),
+('3b1b706391a1ac9a403c57ee07e8596774bcc4a8b0bc02fca68175700b3bd67f474b50b1af9206fd', 1, 2, NULL, '[]', 0, '2021-06-05 10:35:28', '2021-06-05 10:35:28', '2022-06-05 11:35:28'),
+('40549cea4e4a342b4eb426141136435555b2c14d117f6d05f2a9fe84e6f1d8b07e1313820e54ca0e', 1, 2, NULL, '[]', 0, '2021-06-05 10:29:12', '2021-06-05 10:29:12', '2022-06-05 11:29:12'),
+('4f20aeec66df9e8a99a3c1699d95d98abbed0bb6d3f589f5e0cbdc01c209b14d8f956b9ecf61f765', 1, 2, NULL, '[]', 0, '2021-06-05 10:37:52', '2021-06-05 10:37:52', '2022-06-05 11:37:52'),
+('68fe72aa1a7e8b521ca2516bdd1850c79f9e4cade8a2c2a2bd5c3772f2b9933b3b1d092599f11b6e', 1, 2, NULL, '[]', 0, '2021-06-05 10:29:41', '2021-06-05 10:29:41', '2022-06-05 11:29:41'),
+('6cbd11f5b79c5fd8fe5e365bf23913d3accf70fc917e0dcc5183ff0e331d257bee6ffa6f61cea4bd', 1, 2, NULL, '[]', 0, '2021-06-05 10:29:05', '2021-06-05 10:29:05', '2022-06-05 11:29:05'),
+('972f932ef52a92f6a232a29d2318a898a2a0d175d5aab1c2aba23546ab480a5d471471640dd73737', 1, 2, NULL, '[]', 0, '2021-06-05 10:30:07', '2021-06-05 10:30:07', '2022-06-05 11:30:07'),
+('a4f35e74a3c297be387b207bd2b1e285af2c76d90584583768e2745477ee65f214a341f45f60ca4e', 1, 2, NULL, '[]', 0, '2021-06-05 12:23:48', '2021-06-05 12:23:48', '2022-06-05 13:23:48'),
+('b769e802df48d2db3b60da4a3e711b4b8b79d87ee22497099ca0d9b1e3a0ac1d20f83423258754d1', 1, 2, NULL, '[]', 0, '2021-06-05 10:28:10', '2021-06-05 10:28:10', '2022-06-05 11:28:10'),
+('d232d135c07963ea9c7c82aeb1ef7c45ee86347c79a9f4b40f94cd5936024b4d1e67ce6bdda3df94', 1, 2, NULL, '[]', 0, '2021-06-05 10:29:00', '2021-06-05 10:29:00', '2022-06-05 11:29:00'),
+('d49cf8622e111e800670e47902265a0304bc9436dbcfdaa45e7a357c4c296e138b0d170cfeb4aa92', 1, 2, NULL, '[]', 0, '2021-06-05 10:34:22', '2021-06-05 10:34:22', '2022-06-05 11:34:22'),
+('f0adc309402f7741325d6608f3b7fcc9f198143c3b67bb018947079e6eeb19f98fe4cf089b042f4b', 1, 2, NULL, '[]', 0, '2021-06-05 10:16:00', '2021-06-05 10:16:00', '2022-06-05 11:16:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+CREATE TABLE `oauth_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Laravel Personal Access Client', 'IRWnEk2Hg4fry15o46EXkIsJ3U5zHxqVHN4zEWF5', 'http://localhost', 1, 0, 0, '2021-06-05 09:53:42', '2021-06-05 09:53:42'),
+(2, 1, 'Laravel Password Grant Client', 'k2iFX1woDA1JsH32ICtK27WpIKW5SfirgdWSSQvY', 'http://localhost', 0, 1, 0, '2021-06-05 09:53:42', '2021-06-05 09:53:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2021-06-05 09:53:42', '2021-06-05 09:53:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_refresh_tokens`
+--
+
+INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires_at`) VALUES
+('0a80ec89927ec88ba27df4eeee8c4cea81231dac3736fb97280a60221cbd9036b3a9dc47921bc016', '972f932ef52a92f6a232a29d2318a898a2a0d175d5aab1c2aba23546ab480a5d471471640dd73737', 0, '2022-06-05 11:30:07'),
+('0e5ead14b7b2bc8e25db6aa7c7d049733e3d334f9df1d390170a7c3b920a85eb849864e1fba8ff98', '2d4367da8911f66898d567d2ac1d6b9a420c2a714a4c4797722341cf7badf6cecfd8e06705a9d7c4', 0, '2022-06-05 11:20:17'),
+('201ffbdd5c503e9e8672c57f030f090609c9718d865ea70f07b719df12ff48ea0122bedf7ffbac7f', '4f20aeec66df9e8a99a3c1699d95d98abbed0bb6d3f589f5e0cbdc01c209b14d8f956b9ecf61f765', 0, '2022-06-05 11:37:52'),
+('3bc1609308a62631ee5c780497b67821b409771f801e636b6967b74943a5766a5388492671473b0b', 'b769e802df48d2db3b60da4a3e711b4b8b79d87ee22497099ca0d9b1e3a0ac1d20f83423258754d1', 0, '2022-06-05 11:28:10'),
+('54c65ea04c7a74e0ff5c77517b9bb5ce10456a769cab83a9f8b0d4a15b79ffebc139889d5324a3d7', 'd232d135c07963ea9c7c82aeb1ef7c45ee86347c79a9f4b40f94cd5936024b4d1e67ce6bdda3df94', 0, '2022-06-05 11:29:00'),
+('6448baaeb2fffcd465239e6c1602033e4d86856a89c7fb1203b29526815d1adb3d45dfc1d05ea196', '3b1b706391a1ac9a403c57ee07e8596774bcc4a8b0bc02fca68175700b3bd67f474b50b1af9206fd', 0, '2022-06-05 11:35:28'),
+('855027c80abc86ee7df84423cd3c0ebcf9cd706de5c2cc1328eb60cb5e5dd43959dc4c5f5a11c053', '147f7d417da33e3490c2d1aacc20cada13beddf17276c164481be35214cc8130e53bdbf45d34dfc9', 0, '2022-06-05 13:34:12'),
+('9bef6cccb02c7c683257e1cd3551d3c24831124c6c5b28febf2a4075635ee70b1b935fc5803210af', '40549cea4e4a342b4eb426141136435555b2c14d117f6d05f2a9fe84e6f1d8b07e1313820e54ca0e', 0, '2022-06-05 11:29:12'),
+('a4510c3627987bd262f5084bd58f550f331a40fa6ecaea5b156dcebf4a4c00d9d558e9eb47f53fd6', '118f6a506415e5d32fb6fd6990846abfdfbb9ce90aae38b09a262843a685aa9ef6857e574845c6e4', 0, '2022-06-05 13:23:26'),
+('a635ad216726bf94efa5158f1f8c33719d70e19c746598de81febf0ccefbbaa66f841bd0f7bf6bf8', '14817b9aef8ba61ad61af4f775be9197c30ddbc9f7d689539ce538446c0e69191ec753ce9451a15e', 0, '2022-06-05 13:20:02'),
+('afb5671d48a3b1179604d03633e7600520699415575fb709fe788493e5a4b11dbbbc41f98d9863be', 'd49cf8622e111e800670e47902265a0304bc9436dbcfdaa45e7a357c4c296e138b0d170cfeb4aa92', 0, '2022-06-05 11:34:22'),
+('be55b2bb5564cbaab96692b7b9e8cd576c1824a366ecae0f889a068360f145a7471a4fc639a5c4a5', 'a4f35e74a3c297be387b207bd2b1e285af2c76d90584583768e2745477ee65f214a341f45f60ca4e', 0, '2022-06-05 13:23:48'),
+('ddf1cf64a4e881593ee83870ee99a330c49c284fd7c9d4a9eb41d0c287fca525cf4b69314a094fb8', 'f0adc309402f7741325d6608f3b7fcc9f198143c3b67bb018947079e6eeb19f98fe4cf089b042f4b', 0, '2022-06-05 11:16:00'),
+('e3cb83f80bdc3a5a0ed24ead226f7b16c2262187606186ff1ea0a276ae0544e65aa00b7dd40d180f', '68fe72aa1a7e8b521ca2516bdd1850c79f9e4cade8a2c2a2bd5c3772f2b9933b3b1d092599f11b6e', 0, '2022-06-05 11:29:41'),
+('ee8df09d960b726052e9fa951229ebdfc436e4dc4d14cb3239f65d8ab88af63197b375136033c23b', '6cbd11f5b79c5fd8fe5e365bf23913d3accf70fc917e0dcc5183ff0e331d257bee6ffa6f61cea4bd', 0, '2022-06-05 11:29:05');
 
 -- --------------------------------------------------------
 
@@ -468,6 +608,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Adeleke Hammed', 'lekhad19@gmail.com', '$2y$10$kMA/jhgyJRcWOqLdmaWWmuCZj5pDMD9pdJjM7eRa4yp4HnO81fVpi', NULL, '2021-06-05 10:12:21', '2021-06-05 10:12:21');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -476,6 +623,40 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_access_tokens`
+--
+ALTER TABLE `oauth_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_access_tokens_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_auth_codes`
+--
+ALTER TABLE `oauth_auth_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_clients_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_personal_access_clients_client_id_index` (`client_id`);
+
+--
+-- Indexes for table `oauth_refresh_tokens`
+--
+ALTER TABLE `oauth_refresh_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -511,7 +692,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -529,7 +722,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

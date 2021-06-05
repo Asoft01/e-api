@@ -15,3 +15,18 @@ php artisan help make:resource
 php artisan make:resource Product/ProductCollection
 php artisan make:resource Product/ProductResource
 php artisan make:resource ReviewResource
+
+Same issue here with Laravel 5.5.42 and the only way to install laravel/passport is by manually add laravel/passport: '~4.0' to my composer.json & run composer update.
+
+
+https://laravel.com/docs/8.x/passport#requesting-auth-pkce-grant-tokens
+
+If this kind of issue exists 
+Replicating claims as headers is deprecated and will removed from v4.0. Please manually set the header if you need it replicated.
+
+Then simply resolve by copying and pasting this inside AppServiceProvider.php in boot section
+if (config('app.debug')) {
+    error_reporting(E_ALL & ~E_USER_DEPRECATED);
+} else {
+    error_reporting(0);
+}
