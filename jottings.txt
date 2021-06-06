@@ -30,3 +30,7 @@ if (config('app.debug')) {
 } else {
     error_reporting(0);
 }
+
+To run the API http://127.0.0.1:3000/oauth/token 
+########################################################33
+php artisan make:request ProductRequest
